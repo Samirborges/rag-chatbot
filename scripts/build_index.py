@@ -2,11 +2,12 @@ import logging
 
 from src.ingestion.loader import load_pdfs_from_directory
 from src.ingestion.splitter import split_documents_into_chunks
+from src.ingestion.embedder import embed_and_store_documents
 
 logger = logging.getLogger(__name__)
 
 
-def data_ingestion_pipeline(verbose: bool = False) -> list:
+def data_ingestion_pipeline(verbose: bool = False, force_recreate: bool = False) -> list:
     """
     Orquestra a fase de ingestão: carrega os PDFs e divide em chunks.
     Retorna a lista final de chunks, pronta para a etapa de embedding.
@@ -25,7 +26,8 @@ def data_ingestion_pipeline(verbose: bool = False) -> list:
             print(f"page_content: {chunk.page_content}")
             print(f"metadata: {chunk.metadata}")
 
-    return chunks
+    ids = embed_and_store_documents(chunks, force_recreate=force_recreate)
+    return ids
 
 
 if __name__ == "__main__":
@@ -33,7 +35,7 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     )
-    data_ingestion_pipeline(verbose=True)
+    data_ingestion_pipeline(verbose=True, force_recreate=True)
     
     
     
