@@ -13,23 +13,16 @@ from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_excep
 from langchain_google_genai._common import GoogleGenerativeAIError
 
 from src.config import MODEL_EMBEDDINGS, DIMENSION_EMBEDDING, COLLECTION_NAME
+from src.utils import get_env_var
 
 load_dotenv()
 logger = logging.getLogger(__name__)
 
 
-def _get_env_var(name: str) -> str:
-    """Lê uma variável de ambiente obrigatória, falhando cedo se não existir."""
-    value = os.getenv(name)
-    if not value:
-        raise EnvironmentError(f"Variável de ambiente obrigatória não definida: {name}")
-    return value
-
-
 def get_qdrant_client() -> QdrantClient:
     """Cria o cliente de conexão com o Qdrant Cloud."""
-    url = _get_env_var("QDRANT_URL")
-    api_key = _get_env_var("QDRANT_API_KEY")
+    url = get_env_var("QDRANT_URL")
+    api_key = get_env_var("QDRANT_API_KEY")
     return QdrantClient(url=url, api_key=api_key)
 
 
@@ -65,7 +58,7 @@ def get_vectorstore(force_recreate: bool = False) -> QdrantVectorStore:
     à collection do projeto. Reaproveitável tanto na ingestão
     quanto na fase de retrieval.
     """
-    google_api_key = _get_env_var("GOOGLE_API_KEY")
+    google_api_key = get_env_var("GOOGLE_API_KEY")
 
     embeddings = GoogleGenerativeAIEmbeddings(
         model=MODEL_EMBEDDINGS,
