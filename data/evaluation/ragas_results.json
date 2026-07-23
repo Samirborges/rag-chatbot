@@ -1,0 +1,92 @@
+{
+  "records": [
+    {
+      "question": "O que é RAG?",
+      "answer": "Não encontrei essa informação no material do curso. O material descreve o fluxo completo e as fases de um sistema RAG, mas não oferece uma definição direta do que é RAG.",
+      "contexts": [
+        "Aula\nArquitetura RAG \nna Prática",
+        "Aula\nAvaliação com \nLangSmith & RAGAS",
+        "FLUXO COMPLETO DO RAG\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta\n4 Consulta e Recuperação\nA pergunta do usuário é convertida em embedding e \nusada para buscar chunks relevantes.\n5 Geração da Resposta\nO LLM gera uma resposta baseada na pergunta e nos \nchunks recuperados como contexto.",
+        "FLUXO COMPLETO DO RAG\n1 Ingestão de Documentos\nDocumentos são coletados, processados e divididos \nem chunks menores para facilitar a recuperação.\n2 Geração de Embeddings\nCada chunk é convertido em um vetor numérico \n(embedding) que representa seu significado \nsemântico.\n3 Indexação Vetorial\nOs embeddings são armazenados em um banco de \ndados vetorial para busca eficiente.\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta"
+      ],
+      "ground_truth": "RAG é uma arquitetura que combina recuperação de documentos com geração de resposta usando um modelo de linguagem."
+    },
+    {
+      "question": "Qual a diferença entre busca vetorial e busca por palavra-chave?",
+      "answer": "A busca vetorial é semântica, enquanto a busca por palavras-chave é lexical.",
+      "contexts": [
+        "alura\nHybrid Search (Busca Híbrida)\nHybrid Search é uma técnica de \nrecuperação que combina a busca vetorial \n(semântica) com a busca por \npalavras-chave (lexical, ex: BM25.",
+        "Contact\nSão sistemas especializados em armazenar, indexar \ne buscar vetores de alta dimensão de forma \neficiente.\nDiferente dos bancos de dados tradicionais, eles são \notimizados para busca por similaridade, não por \ncorrespondência exata.\nBANCOS DE DADOS VETORIAIS",
+        "ESPAÇO VETORIAL\nOs embeddings criam um espaço \nmultidimensional onde cada\npalavra ou documento é um ponto.\nNeste espaço, a proximidade \ngeométrica representa a similaridade \nsemântica .\nVisualização 3D de um espaço vetorial semântico (reduzido de centenas de dimensões)",
+        "Contact\nQuando humanos leem palavras como \"carro\", \"automóvel\" e \n\"veículo\", entendemos que são conceitos relacionados. Mas para \num computador, são apenas sequências de caracteres sem relação \nóbvia.\nESPAÇO VETORIAL\nQuanto mais próximos os vetores, mais relacionados os \nconceitos!"
+      ],
+      "ground_truth": "Busca vetorial usa similaridade semântica por embeddings; busca por palavra-chave faz correspondência textual literal."
+    },
+    {
+      "question": "Como o retriever escolhe os chunks mais relevantes?",
+      "answer": "A pergunta do usuário é convertida em embedding e usada para buscar chunks relevantes. Essa busca é feita por similaridade, já que os embeddings são representações numéricas (vetores) que capturam o significado semântico dos textos, permitindo a busca por similaridade.",
+      "contexts": [
+        "FLUXO COMPLETO DO RAG\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta\n4 Consulta e Recuperação\nA pergunta do usuário é convertida em embedding e \nusada para buscar chunks relevantes.\n5 Geração da Resposta\nO LLM gera uma resposta baseada na pergunta e nos \nchunks recuperados como contexto.",
+        "COMPONENTES ESSENCIAIS DO RAG\nEmbeddings\nRepresentações numéricas (vetores) que capturam o \nsignificado semântico dos textos, permitindo busca por \nsimilaridade. São o \"DNA\" da informação.\nBanco de Dados Vetorial\nArmazena e indexa os embeddings para busca rápida e \neficiente. Exemplos: FAISS Facebook), Chroma, Pinecone, \nWeaviate.\nChunking\nProcesso de dividir documentos em pedaços menores e \ncoerentes para processamento e recuperação eficientes. \nCrucial para a qualidade das respostas.\nModelo de Linguagem LLM\nO \"cérebro\" que gera respostas coerentes baseadas no \ncontexto recuperado. Pode ser local ou via API OpenAI, \nAnthropic, etc).",
+        "FLUXO COMPLETO DO RAG\n1 Ingestão de Documentos\nDocumentos são coletados, processados e divididos \nem chunks menores para facilitar a recuperação.\n2 Geração de Embeddings\nCada chunk é convertido em um vetor numérico \n(embedding) que representa seu significado \nsemântico.\n3 Indexação Vetorial\nOs embeddings são armazenados em um banco de \ndados vetorial para busca eficiente.\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta",
+        "A SOLUÇÃO: RAG \n(RETRIEVAL-AUGMENTED GENERATION)\nContact\nA primeira etapa, \"Recuperação\", consiste em encontrar os \ntrechos de informação mais relevantes em seus documentos para \nresponder a uma pergunta.\n1. O sistema busca os documentos \nrelevantes em sua base de \nconhecimento\n2. Em seguida, aumenta o prompt do \nusuário, inserindo a informação \nencontrada como contexto\n3. Finalmente, o LLM gera uma resposta \ncom a instrução clara de usar APENAS \naquele contexto\n1\n2\n3"
+      ],
+      "ground_truth": "O retriever usa similaridade entre embeddings da pergunta e dos chunks para selecionar os trechos mais relevantes."
+    }
+  ],
+  "results": {
+    "rows": [
+      {
+        "user_input": "O que é RAG?",
+        "retrieved_contexts": [
+          "Aula\nArquitetura RAG \nna Prática",
+          "Aula\nAvaliação com \nLangSmith & RAGAS",
+          "FLUXO COMPLETO DO RAG\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta\n4 Consulta e Recuperação\nA pergunta do usuário é convertida em embedding e \nusada para buscar chunks relevantes.\n5 Geração da Resposta\nO LLM gera uma resposta baseada na pergunta e nos \nchunks recuperados como contexto.",
+          "FLUXO COMPLETO DO RAG\n1 Ingestão de Documentos\nDocumentos são coletados, processados e divididos \nem chunks menores para facilitar a recuperação.\n2 Geração de Embeddings\nCada chunk é convertido em um vetor numérico \n(embedding) que representa seu significado \nsemântico.\n3 Indexação Vetorial\nOs embeddings são armazenados em um banco de \ndados vetorial para busca eficiente.\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta"
+        ],
+        "response": "Não encontrei essa informação no material do curso. O material descreve o fluxo completo e as fases de um sistema RAG, mas não oferece uma definição direta do que é RAG.",
+        "reference": "RAG é uma arquitetura que combina recuperação de documentos com geração de resposta usando um modelo de linguagem.",
+        "answer_relevancy": NaN,
+        "faithfulness": NaN,
+        "context_precision": NaN,
+        "context_recall": NaN
+      },
+      {
+        "user_input": "Qual a diferença entre busca vetorial e busca por palavra-chave?",
+        "retrieved_contexts": [
+          "alura\nHybrid Search (Busca Híbrida)\nHybrid Search é uma técnica de \nrecuperação que combina a busca vetorial \n(semântica) com a busca por \npalavras-chave (lexical, ex: BM25.",
+          "Contact\nSão sistemas especializados em armazenar, indexar \ne buscar vetores de alta dimensão de forma \neficiente.\nDiferente dos bancos de dados tradicionais, eles são \notimizados para busca por similaridade, não por \ncorrespondência exata.\nBANCOS DE DADOS VETORIAIS",
+          "ESPAÇO VETORIAL\nOs embeddings criam um espaço \nmultidimensional onde cada\npalavra ou documento é um ponto.\nNeste espaço, a proximidade \ngeométrica representa a similaridade \nsemântica .\nVisualização 3D de um espaço vetorial semântico (reduzido de centenas de dimensões)",
+          "Contact\nQuando humanos leem palavras como \"carro\", \"automóvel\" e \n\"veículo\", entendemos que são conceitos relacionados. Mas para \num computador, são apenas sequências de caracteres sem relação \nóbvia.\nESPAÇO VETORIAL\nQuanto mais próximos os vetores, mais relacionados os \nconceitos!"
+        ],
+        "response": "A busca vetorial é semântica, enquanto a busca por palavras-chave é lexical.",
+        "reference": "Busca vetorial usa similaridade semântica por embeddings; busca por palavra-chave faz correspondência textual literal.",
+        "answer_relevancy": NaN,
+        "faithfulness": NaN,
+        "context_precision": NaN,
+        "context_recall": NaN
+      },
+      {
+        "user_input": "Como o retriever escolhe os chunks mais relevantes?",
+        "retrieved_contexts": [
+          "FLUXO COMPLETO DO RAG\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta\n4 Consulta e Recuperação\nA pergunta do usuário é convertida em embedding e \nusada para buscar chunks relevantes.\n5 Geração da Resposta\nO LLM gera uma resposta baseada na pergunta e nos \nchunks recuperados como contexto.",
+          "COMPONENTES ESSENCIAIS DO RAG\nEmbeddings\nRepresentações numéricas (vetores) que capturam o \nsignificado semântico dos textos, permitindo busca por \nsimilaridade. São o \"DNA\" da informação.\nBanco de Dados Vetorial\nArmazena e indexa os embeddings para busca rápida e \neficiente. Exemplos: FAISS Facebook), Chroma, Pinecone, \nWeaviate.\nChunking\nProcesso de dividir documentos em pedaços menores e \ncoerentes para processamento e recuperação eficientes. \nCrucial para a qualidade das respostas.\nModelo de Linguagem LLM\nO \"cérebro\" que gera respostas coerentes baseadas no \ncontexto recuperado. Pode ser local ou via API OpenAI, \nAnthropic, etc).",
+          "FLUXO COMPLETO DO RAG\n1 Ingestão de Documentos\nDocumentos são coletados, processados e divididos \nem chunks menores para facilitar a recuperação.\n2 Geração de Embeddings\nCada chunk é convertido em um vetor numérico \n(embedding) que representa seu significado \nsemântico.\n3 Indexação Vetorial\nOs embeddings são armazenados em um banco de \ndados vetorial para busca eficiente.\nO ciclo de vida completo de um sistema RAG envolve duas fases principais: \nIngestão de Dados e Consulta",
+          "A SOLUÇÃO: RAG \n(RETRIEVAL-AUGMENTED GENERATION)\nContact\nA primeira etapa, \"Recuperação\", consiste em encontrar os \ntrechos de informação mais relevantes em seus documentos para \nresponder a uma pergunta.\n1. O sistema busca os documentos \nrelevantes em sua base de \nconhecimento\n2. Em seguida, aumenta o prompt do \nusuário, inserindo a informação \nencontrada como contexto\n3. Finalmente, o LLM gera uma resposta \ncom a instrução clara de usar APENAS \naquele contexto\n1\n2\n3"
+        ],
+        "response": "A pergunta do usuário é convertida em embedding e usada para buscar chunks relevantes. Essa busca é feita por similaridade, já que os embeddings são representações numéricas (vetores) que capturam o significado semântico dos textos, permitindo a busca por similaridade.",
+        "reference": "O retriever usa similaridade entre embeddings da pergunta e dos chunks para selecionar os trechos mais relevantes.",
+        "answer_relevancy": NaN,
+        "faithfulness": NaN,
+        "context_precision": NaN,
+        "context_recall": NaN
+      }
+    ],
+    "summary": {
+      "answer_relevancy": NaN,
+      "faithfulness": NaN,
+      "context_precision": NaN,
+      "context_recall": NaN
+    }
+  }
+}
